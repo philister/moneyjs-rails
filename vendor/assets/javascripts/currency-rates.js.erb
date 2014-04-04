@@ -1,0 +1,21 @@
+<% 
+  key = 'latest-currency-rates-'+Time.now.utc.strftime('%Y-%m-%d_%H')
+  latest = Rails.cache.read(key)
+  if latest.blank?
+    latest = OpenExchangeRates::Rates.new.latest
+    Rails.cache.write(key,latest)
+  end
+  
+  if Moneyjs.configuration.only_currencies.present?
+    latest.rates.delete_if{|r| !r.in?(Moneyjs.configuration.only_currencies)}
+  end
+%>
+
+fx.base = '<%= latest.base %>';
+fx.rates = <%= latest.rates.to_json %>;
+
+<% if Moneyjs.configuration.default_from_currency %>
+  fx.settings = {
+    from : '<%= Moneyjs.configuration.default_from_currency %>'
+  }
+<% end %>
