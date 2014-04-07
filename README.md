@@ -53,9 +53,11 @@ Add the following to your `app/assets/javascripts/application.js`:
 
     //= require moneyjs
 
-If you've set up the exchange rates via openexchangerates.org above, add
+If you've set up the exchange rates via openexchangerates.org above, add to `app/views/layouts/application.html.erb`
 
-    //= currency-rates.js.erb
+    <%= moneyjs_currency_rates %>
+
+
 
 Otherwise do it your self like this:
   
