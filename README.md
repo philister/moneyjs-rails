@@ -1,12 +1,11 @@
-moneyjs-rails
-=============
+# moneyjs-rails
 
 Since we needed to add foreign currency to pictrs.com (Welcome Swtzerland to Europe!), we decided to do it just clientside with the great [Money.js](http://josscrowcroft.github.io/money.js/)
 You maybe want to use it with
 https://github.com/torbjon/accountingjs-rails
 
 
-# Install
+## Install
 
 Add it to your Rails application's `Gemfile`:
 
@@ -17,7 +16,7 @@ gem 'moneyjs-rails'
 Then `bundle install`.
 
 
-## Setup Exchange Rates via openexchangerates.org (optional)
+### Setup Exchange Rates via openexchangerates.org (optional)
 
 Add this line to your application's Gemfile:
 
@@ -47,7 +46,7 @@ At the same place you can define your default currency,
 
 
 
-# Usage
+## Usage
 
 Add the following to your `app/assets/javascripts/application.js`:
 
